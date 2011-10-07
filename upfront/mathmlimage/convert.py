@@ -11,7 +11,7 @@ from xml.dom import Node
 
 _handler = None
 
-def convert(mathml, format='PNG'):
+def convert(mathml, format='PNG', moreargs=[]):
     """ Use ImageMagick to convert svg to image.
     
         ImageMagick binaries must be available on the path.
@@ -66,7 +66,12 @@ def convert(mathml, format='PNG'):
     
     format_arg = '%s:-' % format
     svgfile.seek(0)
-    process = subprocess.Popen(['convert', '-', format_arg],
+    cmdargs = ['convert', '-', format_arg]
+    moreargs.reverse()
+    for arg in moreargs:
+        cmdargs.insert(1, arg)
+        
+    process = subprocess.Popen(cmdargs,
         stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     stdout, stderr = process.communicate(svgfile.read())
 
