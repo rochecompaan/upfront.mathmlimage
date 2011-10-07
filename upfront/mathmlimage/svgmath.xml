@@ -58,6 +58,8 @@
 
     <!-- Math variant definitions -->
     <!-- Serif -->
+    <mathvariant name="serif"
+                 family="Times New Roman, FreeSans"/>                 
     <mathvariant name="normal"
                  family="Times New Roman, FreeSans"/>                 
     <mathvariant name="bold"
