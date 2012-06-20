@@ -66,7 +66,7 @@ def convert(mathml, format='PNG', moreargs=[]):
     
     format_arg = '%s:-' % format
     svgfile.seek(0)
-    cmdargs = ['convert', '-', format_arg]
+    cmdargs = ['convert', '-transparent', 'white', '-', format_arg]
     moreargs.reverse()
     for arg in moreargs:
         cmdargs.insert(1, arg)
